@@ -1,0 +1,25 @@
+{
+  "name": "munapi",
+  "version": "1.0.0",
+  "description": "API for accessing Memorial University Applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avinashraja98/munapi.git"
+  },
+  "author": "Avinash Raja",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avinashraja98/munapi/issues"
+  },
+  "homepage": "https://github.com/avinashraja98/munapi#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "request": "^2.85.0"
+  }
+}
