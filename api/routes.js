@@ -14,6 +14,10 @@ module.exports = (app) => {
             extended: true
         }));
 
+	app.route('/').get((req,res) => {
+		res.status(200).json({message:"Welcome to the munapi!!!"});
+	});
+
         app.route('/schedule')
             .get((req, res) => {
 
