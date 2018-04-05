@@ -75,14 +75,33 @@ module.exports = app => {
               });
               return;
             }
+
             const $ = cheerio.load(body);
 
-            var schedule = $('div[id="course_container"]')
-              .children("div,div[class=col-sm-3]")
-              .text()
-              .split(" ");
-            //schedule = schedule.replace(/\s/g, "");
-            console.log(schedule);
+            var schedule = [];
+
+            $('div[id="course_container"]')
+              .children(".row")
+              .each((i, elem) => {
+                var data = {};
+                $(elem)
+                  .children(".xs-header")
+                  .each((j, elem) => {
+                    var objAttrib = $(elem)
+                      .text()
+                      .replace(/\s/g, "");
+                    var objData = $(elem)
+                      .next()
+                      .text()
+                      .replace(/\s/g, "");
+                    data[objAttrib] = objData;
+                  });
+                schedule.push(data);
+              });
+
+            schedule = schedule.filter(
+              value => Object.keys(value).length !== 0 //remove empty objects
+            );
 
             res.json({
               schedule: schedule
@@ -95,7 +114,7 @@ module.exports = app => {
 
   app.use((req, res) => {
     res.status(404).json({
-      message: "Page Not Found!!!"
+      message: "Not Found!!!"
     });
   });
 };
